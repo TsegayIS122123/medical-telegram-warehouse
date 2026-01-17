@@ -21,7 +21,7 @@ COPY . .
 # Create necessary directories
 RUN mkdir -p data/raw/images data/raw/telegram_messages logs
 
-# Initialize dbt project
+# Initialize dbt project structure
 RUN cd medical_warehouse && \
     echo "Creating dbt project structure..." && \
     mkdir -p models/staging models/marts models/intermediate tests/custom seeds macros snapshots

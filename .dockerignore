@@ -53,3 +53,11 @@ htmlcov/
 
 # Docker
 docker-compose.override.yml
+
+# CI files
+.github/
+
+# Large files
+*.zip
+*.tar
+*.gz
