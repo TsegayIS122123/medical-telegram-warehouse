@@ -1,26 +1,35 @@
-{{ config(materialized='table') }}
+{{ config(materialized='table', schema='public_marts') }}
 
-with date_range as (
-    select 
+WITH date_series AS (
+    SELECT 
         generate_series(
-            '2024-01-01'::date,
-            '2025-12-31'::date,
+            (SELECT MIN(DATE(message_date)) FROM {{ ref('stg_telegram_messages') }}),
+            (SELECT MAX(DATE(message_date)) FROM {{ ref('stg_telegram_messages') }}),
             '1 day'::interval
-        ) as full_date
+        )::date as full_date
 )
 
-select
-    to_char(full_date, 'YYYYMMDD')::integer as date_key,
+SELECT
+    TO_CHAR(full_date, 'YYYYMMDD')::integer as date_key,
     full_date,
-    extract(dow from full_date) as day_of_week,
-    to_char(full_date, 'Day') as day_name,
-    extract(week from full_date) as week_of_year,
-    extract(month from full_date) as month,
-    to_char(full_date, 'Month') as month_name,
-    extract(quarter from full_date) as quarter,
-    extract(year from full_date) as year,
-    case 
-        when extract(dow from full_date) in (0, 6) then true 
-        else false 
-    end as is_weekend
-from date_range
+    EXTRACT(DOW FROM full_date) as day_of_week,
+    CASE EXTRACT(DOW FROM full_date)
+        WHEN 0 THEN 'Sunday'
+        WHEN 1 THEN 'Monday'
+        WHEN 2 THEN 'Tuesday'
+        WHEN 3 THEN 'Wednesday'
+        WHEN 4 THEN 'Thursday'
+        WHEN 5 THEN 'Friday'
+        WHEN 6 THEN 'Saturday'
+    END as day_name,
+    EXTRACT(WEEK FROM full_date) as week_of_year,
+    EXTRACT(MONTH FROM full_date) as month,
+    TO_CHAR(full_date, 'Month') as month_name,
+    EXTRACT(QUARTER FROM full_date) as quarter,
+    EXTRACT(YEAR FROM full_date) as year,
+    CASE 
+        WHEN EXTRACT(DOW FROM full_date) IN (0, 6) THEN TRUE 
+        ELSE FALSE 
+    END as is_weekend
+FROM date_series
+ORDER BY full_date
