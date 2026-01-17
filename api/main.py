@@ -5,11 +5,19 @@ from sqlalchemy import text, func, case
 from typing import List, Optional
 import pandas as pd
 
-from database import get_db
-from schemas import (
-    ChannelStats, TopProduct, Message, 
-    VisualContentStats, ActivityTrend, MessageSearch
-)
+try:
+    from .database import get_db
+    from .schemas import (
+        ChannelStats, TopProduct, Message, 
+        VisualContentStats, ActivityTrend, MessageSearch
+    )
+except ImportError:
+    # Fallback for when running directly
+    from database import get_db
+    from schemas import (
+        ChannelStats, TopProduct, Message, 
+        VisualContentStats, ActivityTrend, MessageSearch
+    )
 
 app = FastAPI(
     title="Medical Telegram Analytics API",
