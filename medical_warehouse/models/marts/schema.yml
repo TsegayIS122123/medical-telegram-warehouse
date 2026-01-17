@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: dim_channels
+    description: "Dimension table for Telegram channels"
+    columns:
+      - name: channel_key
+        description: "Surrogate key for channel"
+        tests:
+          - unique
+          - not_null
+      - name: channel_name
+        description: "Name of the Telegram channel"
+        tests:
+          - not_null
+      - name: channel_type
+        description: "Type of channel (Pharmaceutical, Cosmetics, Medical)"
+      - name: first_post_date
+        description: "Date of first post in the channel"
+      - name: last_post_date
+        description: "Date of last post in the channel"
+      - name: total_posts
+        description: "Total number of posts in the channel"
+      - name: avg_views
+        description: "Average views per post"
+
+  - name: fct_messages
+    description: "Fact table for Telegram messages"
+    columns:
+      - name: message_id
+        description: "Unique identifier for each message"
+        tests:
+          - unique
+          - not_null
+      - name: channel_key
+        description: "Foreign key to dim_channels"
+        tests:
+          - relationships:
+              to: ref('dim_channels')
+              field: channel_key
+      - name: date_key
+        description: "Foreign key to dim_dates"
+      - name: message_text
+        description: "Full text content of the message"
+      - name: message_length
+        description: "Length of the message text"
+      - name: view_count
+        description: "Number of views on the message"
+      - name: forward_count
+        description: "Number of times the message was forwarded"
+      - name: has_image
+        description: "Whether the message contains an image"

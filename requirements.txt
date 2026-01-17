@@ -1,0 +1,48 @@
+# Core Python
+python>=3.9
+
+# Data Extraction
+telethon>=1.42.0
+python-dotenv>=1.0.0
+
+# Database & ORM
+psycopg2-binary>=2.9.9
+sqlalchemy>=2.0.45
+alembic>=1.13.1
+
+# Data Transformation
+dbt-core>=1.11.0
+dbt-postgres>=1.10.0
+
+# Computer Vision
+ultralytics>=8.1.0
+opencv-python-headless>=4.9.0.80
+pillow>=10.2.0
+
+# API Framework
+fastapi>=0.128.0
+uvicorn[standard]>=0.25.0
+pydantic>=2.12.5
+
+# Orchestration
+dagster>=1.12.0
+dagster-postgres>=0.28.0
+dagster-dbt>=0.28.0
+
+# Utilities
+pandas>=2.1.4
+numpy>=1.24.4
+requests>=2.31.0
+loguru>=0.7.2
+
+# Testing
+pytest>=7.4.3
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+httpx>=0.25.2
+
+# Development
+ipykernel>=6.0.0
+jupyter>=1.0.0
+black>=24.0.0
+flake8>=6.0.0

@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_telegram_messages
+    description: "Staging table for raw Telegram messages"
+    columns:
+      - name: message_id
+        description: "Unique identifier for each message"
+        tests:
+          - unique
+          - not_null
+      - name: channel_name
+        description: "Name of the Telegram channel"
+        tests:
+          - not_null
+      - name: message_date
+        description: "Timestamp of the message"
+        tests:
+          - not_null
+      - name: message_text
+        description: "Full text content of the message"
+      - name: views
+        description: "Number of views on the message"
+      - name: forwards
+        description: "Number of times the message was forwarded"
+      - name: has_media
+        description: "Whether the message contains media"
+      - name: image_path
+        description: "Path to downloaded image (if applicable)"

@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: telegram_warehouse_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-warehouse_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-warehouse_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-medical_warehouse}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-warehouse_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    container_name: telegram_api
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-warehouse_user}:${POSTGRES_PASSWORD:-warehouse_pass}@postgres:5432/${POSTGRES_DB:-medical_warehouse}
+      TELEGRAM_API_ID: ${TELEGRAM_API_ID}
+      TELEGRAM_API_HASH: ${TELEGRAM_API_HASH}
+      TELEGRAM_PHONE: ${TELEGRAM_PHONE}
+    volumes:
+      - ./api:/app/api
+      - ./src:/app/src
+      - ./data:/app/data
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+
+  dagster:
+    build: .
+    container_name: dagster_orchestrator
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      DAGSTER_POSTGRES_USER: ${POSTGRES_USER:-warehouse_user}
+      DAGSTER_POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-warehouse_pass}
+      DAGSTER_POSTGRES_DB: ${POSTGRES_DB:-medical_warehouse}
+      TELEGRAM_API_ID: ${TELEGRAM_API_ID}
+      TELEGRAM_API_HASH: ${TELEGRAM_API_HASH}
+      TELEGRAM_PHONE: ${TELEGRAM_PHONE}
+    volumes:
+      - ./pipeline:/app/pipeline
+      - ./src:/app/src
+      - ./data:/app/data
+      - ./medical_warehouse:/app/medical_warehouse
+    command: dagster dev -f pipeline/dagster_pipeline.py -h 0.0.0.0 -p 3000
+
+volumes:
+  postgres_data:

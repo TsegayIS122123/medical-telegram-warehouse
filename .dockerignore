@@ -1,0 +1,55 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv
+ENV/
+env.bak/
+venv.bak/
+
+# Data
+data/raw/images/
+data/raw/telegram_messages/
+*.db
+*.sqlite
+data/outputs/
+
+# DBT
+medical_warehouse/target/
+medical_warehouse/dbt_packages/
+medical_warehouse/logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Logs
+logs/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Test
+.pytest_cache/
+.coverage
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Docker
+docker-compose.override.yml
