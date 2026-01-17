@@ -4,9 +4,9 @@ medical_warehouse:
     dev:
       type: postgres
       host: localhost
-      user: warehouse_user
-      pass: warehouse_pass
-      port: 5432
+      user: postgres
+      pass: postgres
+      port: 5433
       dbname: medical_warehouse
-      schema: public
-      threads: 4
+      schema: public  # Default schema for dbt
+      threads: 1

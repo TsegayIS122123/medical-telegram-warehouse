@@ -1,5 +1,6 @@
 # medical-telegram-warehouse
 End-to-end data pipeline for Ethiopian medical Telegram channels - from raw data scraping to analytical API with dbt transformations, YOLO image detection, and Dagster orchestration.
+
 ## 📋 Project Overview
 This project builds a data platform that:
 1. **Extracts** data from Ethiopian medical Telegram channels
@@ -9,17 +10,17 @@ This project builds a data platform that:
 5. **Orchestrates** with Dagster for production workflows
 
 ## 🏗️ Architecture
-Telegram API → Data Lake (JSON/Images) → PostgreSQL → dbt Transformations → Star Schema → FastAPI → End Users
+Telegram Scraping → Data Lake (JSON/Images) → PostgreSQL → dbt Transformations → Star Schema → FastAPI → End Users
 ↑
-YOLO Detection → Image Metadata
+Image Processing & YOLO Detection
 
 ## 🛠️ Tech Stack
-- **Data Extraction**: Telethon, Python
+- **Data Extraction**: Python, Telethon (planned), Pillow (image generation)
 - **Data Warehouse**: PostgreSQL
-- **Transformation**: dbt (Data Build Tool)
-- **Image Analysis**: YOLOv8 (Ultralytics)
+- **Transformation**: dbt (Data Build Tool) v1.7.0
+- **Image Analysis**: YOLOv8 (Ultralytics) - planned
 - **API**: FastAPI, SQLAlchemy, Pydantic
-- **Orchestration**: Dagster
+- **Orchestration**: Dagster (planned)
 - **Infrastructure**: Docker, Docker Compose
 
 ## 🚀 Quick Start
@@ -27,49 +28,58 @@ YOLO Detection → Image Metadata
 2. Copy `.env.example` to `.env` and fill in credentials
 3. Run `docker-compose up -d`
 4. Access services:
-   - API: http://localhost:8000
-   - API Docs: http://localhost:8000/docs
-   - Dagster: http://localhost:3000
+   - API: http://localhost:8000 (planned)
+   - API Docs: http://localhost:8000/docs (planned)
+   - Dagster: http://localhost:3000 (planned)
 
-## 📊 Data Model
-Star Schema with:
-- **Fact Table**: `fct_messages` (message-level metrics)
-- **Dimension Tables**: `dim_channels`, `dim_dates`, `dim_products`
-- **Enrichment**: `fct_image_detections` (YOLO results)
+## 📊 Data Model (Star Schema - IMPLEMENTED)
+┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+│ dim_channels   │ │ dim_dates       │ │ fct_messages    │
+├─────────────────┤ ├─────────────────┤ ├─────────────────┤
+│ • channel_key  │◄────│ • date_key    │◄────│ • message_id   │
+│ • channel_name │     │ • full_date   │     │ • channel_key  │
+│ • channel_type │     │ • day_of_week │     │ • date_key     │
+│ • total_posts  │     │ • month_name  │     │ • message_text │
+│ • avg_views    │     │ • year        │     │ • view_count   │
+└─────────────────┘     │ • is_weekend  │     │ • forward_count│
+                        └─────────────────┘     │ • has_image    │
+                                                └─────────────────┘
 
+## 🎯 Project Status: TASK 1 & 2 COMPLETE ✅
 
-##  Task 1: Data Scraping and Collection - COMPLETE
+### **📊 Actual Results:**
+- **Scraped Messages:** 45 real messages (Task 1) + 89 sample messages
+- **Images Created:** 17 medical product images
+- **Channels Processed:** chemed, lobelia4cosmetics, tikvahpharma, ethiopharmacy, addispharma
+- **Data Loaded to Database:** Successfully loaded to PostgreSQL and SQLite
+- **dbt Models Created:** 4 models (staging + 3 marts) - 100% tests passing
+- **Data Warehouse:** Complete star schema implemented
 
-### 📋 Deliverables Created:
+### Task 1: Data Scraping and Collection - COMPLETE
 
-#### 1. **Scraper Script** (`src/scraper.py`)
-- Generates realistic Telegram data matching all requirements
-- Creates sample data for Ethiopian medical Telegram channels
-- Includes all 8 required data fields
-- Ready for Telethon API integration when needed
+#### 📋 Deliverables Created:
+1. **Scraper Script** (`src/scraper.py`)
+   - Generates realistic Telegram data matching all requirements
+   - Creates sample data for Ethiopian medical Telegram channels
+   - Includes all 8 required data fields
+   - Ready for Telethon API integration when needed
 
-**Total:** 89 messages across 5 channels
+2. **All Required Data Fields** (8 fields per message)
+   - `message_id` - Unique identifier
+   - `channel_name` - Telegram channel name  
+   - `message_date` - Timestamp
+   - `message_text` - Content with Ethiopian medical products
+   - `views` - Number of views (100-5000)
+   - `forwards` - Number of forwards (0-100)
+   - `has_media` - Boolean for media presence
+   - `image_path` - Path to downloaded image (33% of messages)
 
-#### 4. **All Required Data Fields** (8 fields per message)
-- `message_id` - Unique identifier
-- `channel_name` - Telegram channel name  
-- `message_date` - Timestamp
-- `message_text` - Content with Ethiopian medical products
-- `views` - Number of views (100-5000)
-- `forwards` - Number of forwards (0-100)
-- `has_media` - Boolean for media presence
-- `image_path` - Path to downloaded image (33% of messages)
-
-#### 5. **Logging Implementation**
-- `logs/scraper.log` - Complete scraping activity log
-- Includes channels processed, message counts, and timestamps
-
-### 📊 Channels Processed:
-1. **chemed** - CheMed Telegram Channel
-2. **lobelia4cosmetics** - https://t.me/lobelia4cosmetics
-3. **tikvahpharma** - https://t.me/tikvahpharma
-4. **ethiopharmacy** - Additional from et.tgstat.com/medicine
-5. **addispharma** - Additional from et.tgstat.com/medicine
+3. **Channels Processed:**
+   - **chemed** - CheMed Telegram Channel
+   - **lobelia4cosmetics** - https://t.me/lobelia4cosmetics
+   - **tikvahpharma** - https://t.me/tikvahpharma
+   - **ethiopharmacy** - Additional from et.tgstat.com/medicine
+   - **addispharma** - Additional from et.tgstat.com/medicine
 
 ##  Task 2: Data Modeling and Transformation - COMPLETE
 
@@ -118,6 +128,15 @@ dim_channels + fact_messages
   - `has_image`: Whether message contains an image
 
 ### 📋 Channel Classification Results:
+=======
+#### Tables Created:
+1. **raw_messages** (Raw Data Layer)
+2. **clean_messages** (Staging/Cleaned Data)
+3. **dim_channels** (Dimension Table)
+4. **fact_messages** (Fact Table)
+
+#### Channel Classification Results:
+>>>>>>> task-1
 | Channel | Type | Posts | Avg Views |
 |---------|------|-------|-----------|
 | addispharma | Pharmaceutical | 17 | ~2,550 |
@@ -139,3 +158,28 @@ python scripts/load_data_simple.py
 
 # Verify results
 python scripts/check_tables_simple.py
+=======
+## 🚀 Quick Start Commands
+
+```bash
+# Option 1: Using Docker (recommended)
+docker-compose up -d
+
+# Option 2: Manual setup
+# 1. Start PostgreSQL
+docker run -d --name medical_postgres -p 5432:5432 \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=medical_warehouse \
+  postgres:15
+
+# 2. Run scraper (Task 1)
+python src/scraper.py
+
+# 3. Load to PostgreSQL (Task 2)
+python src/loader.py
+
+# 4. Run dbt transformations
+cd medical_warehouse
+dbt run
+dbt test
+>>>>>>> task-1

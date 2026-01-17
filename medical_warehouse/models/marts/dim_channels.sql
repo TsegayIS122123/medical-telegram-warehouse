@@ -1,26 +1,14 @@
-{{ config(materialized='table') }}
+{{ config(materialized='table', schema='marts') }}
 
-with channel_stats as (
-    select
-        channel_name,
-        min(message_date) as first_post_date,
-        max(message_date) as last_post_date,
-        count(*) as total_posts,
-        avg(views) as avg_views
-    from {{ ref('stg_telegram_messages') }}
-    group by channel_name
-)
-
-select
-    row_number() over (order by channel_name) as channel_key,
+SELECT
+    ROW_NUMBER() OVER (ORDER BY channel_name) as channel_key,
     channel_name,
-    case 
-        when channel_name ilike '%pharma%' then 'Pharmaceutical'
-        when channel_name ilike '%cosmetic%' then 'Cosmetics'
-        else 'Medical'
-    end as channel_type,
-    first_post_date,
-    last_post_date,
-    total_posts,
-    avg_views
-from channel_stats
+    CASE 
+        WHEN channel_name = 'lobelia4cosmetics' THEN 'Cosmetics'
+        WHEN channel_name = 'tikvahpharma' THEN 'Pharmaceutical'
+        ELSE 'Medical'
+    END as channel_type,
+    COUNT(*) as total_posts,
+    AVG(views)::integer as avg_views
+FROM {{ ref('stg_telegram_messages') }}
+GROUP BY channel_name

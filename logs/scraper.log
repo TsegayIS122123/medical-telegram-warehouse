@@ -1,9 +1,46 @@
-
-SCRAPING LOG - 2026-01-17 12:14:07.345165
-=====================================
-Channels scraped: 5
-Total messages: 89
-Date: 2026-01-17
-Channels processed: chemed, lobelia4cosmetics, tikvahpharma, ethiopharmacy, addispharma
-Errors: None
-=====================================
+2026-01-17 20:22:02,837 - INFO - Telegram Scraper initialized
+2026-01-17 20:22:02,838 - INFO - ==================================================
+2026-01-17 20:22:02,839 - INFO - STARTING TELEGRAM DATA SCRAPING
+2026-01-17 20:22:02,840 - INFO - ==================================================
+2026-01-17 20:22:02,841 - INFO - Scraping channel: chemed
+2026-01-17 20:22:03,420 - INFO - Downloaded image: data/raw/images/chemed/1.jpg
+2026-01-17 20:22:03,431 - INFO - Downloaded image: data/raw/images/chemed/2.jpg
+2026-01-17 20:22:03,449 - INFO - Downloaded image: data/raw/images/chemed/4.jpg
+2026-01-17 20:22:03,473 - INFO - Downloaded image: data/raw/images/chemed/5.jpg
+2026-01-17 20:22:03,490 - INFO -   Scraped 5/15 messages from chemed
+2026-01-17 20:22:03,504 - INFO -   Scraped 10/15 messages from chemed
+2026-01-17 20:22:03,536 - INFO - Downloaded image: data/raw/images/chemed/11.jpg
+2026-01-17 20:22:03,570 - INFO - Downloaded image: data/raw/images/chemed/12.jpg
+2026-01-17 20:22:03,616 - INFO - Downloaded image: data/raw/images/chemed/14.jpg
+2026-01-17 20:22:03,721 - INFO -   Scraped 15/15 messages from chemed
+2026-01-17 20:22:03,764 - INFO - Finished scraping chemed: 15 messages
+2026-01-17 20:22:03,794 - INFO - Saved 15 messages to data/raw/telegram_messages/2026-01-17/chemed.json
+2026-01-17 20:22:03,800 - INFO - Scraping channel: lobelia4cosmetics
+2026-01-17 20:22:03,816 - INFO - Downloaded image: data/raw/images/lobelia4cosmetics/2.jpg
+2026-01-17 20:22:03,936 - INFO - Downloaded image: data/raw/images/lobelia4cosmetics/4.jpg
+2026-01-17 20:22:04,190 - INFO - Downloaded image: data/raw/images/lobelia4cosmetics/5.jpg
+2026-01-17 20:22:04,300 - INFO -   Scraped 5/15 messages from lobelia4cosmetics
+2026-01-17 20:22:04,381 - INFO - Downloaded image: data/raw/images/lobelia4cosmetics/6.jpg
+2026-01-17 20:22:04,431 - INFO - Downloaded image: data/raw/images/lobelia4cosmetics/8.jpg
+2026-01-17 20:22:04,481 - INFO - Downloaded image: data/raw/images/lobelia4cosmetics/9.jpg
+2026-01-17 20:22:04,496 - INFO -   Scraped 10/15 messages from lobelia4cosmetics
+2026-01-17 20:22:04,507 - INFO -   Scraped 15/15 messages from lobelia4cosmetics
+2026-01-17 20:22:04,523 - INFO - Finished scraping lobelia4cosmetics: 15 messages
+2026-01-17 20:22:04,554 - INFO - Saved 15 messages to data/raw/telegram_messages/2026-01-17/lobelia4cosmetics.json
+2026-01-17 20:22:04,571 - INFO - Scraping channel: tikvahpharma
+2026-01-17 20:22:04,588 - INFO -   Scraped 5/15 messages from tikvahpharma
+2026-01-17 20:22:04,637 - INFO - Downloaded image: data/raw/images/tikvahpharma/6.jpg
+2026-01-17 20:22:04,671 - INFO - Downloaded image: data/raw/images/tikvahpharma/8.jpg
+2026-01-17 20:22:04,717 - INFO -   Scraped 10/15 messages from tikvahpharma
+2026-01-17 20:22:04,819 - INFO - Downloaded image: data/raw/images/tikvahpharma/13.jpg
+2026-01-17 20:22:04,851 - INFO - Downloaded image: data/raw/images/tikvahpharma/14.jpg
+2026-01-17 20:22:04,856 - INFO -   Scraped 15/15 messages from tikvahpharma
+2026-01-17 20:22:04,861 - INFO - Finished scraping tikvahpharma: 15 messages
+2026-01-17 20:22:04,870 - INFO - Saved 15 messages to data/raw/telegram_messages/2026-01-17/tikvahpharma.json
+2026-01-17 20:22:04,885 - INFO - ==================================================
+2026-01-17 20:22:04,888 - INFO - SCRAPING COMPLETE
+2026-01-17 20:22:04,889 - INFO - Total messages: 45
+2026-01-17 20:22:04,890 - INFO - Messages with images: 17
+2026-01-17 20:22:04,896 - INFO - Data saved to: data/raw/telegram_messages/2026-01-17/
+2026-01-17 20:22:04,898 - INFO - Images saved to: data/raw/images/
+2026-01-17 20:22:04,900 - INFO - ==================================================
