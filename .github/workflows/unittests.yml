@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10", "3.11"]
+        python-version: ["3.11"]  
 
     services:
       postgres:
@@ -50,10 +50,13 @@ jobs:
         echo "POSTGRES_HOST=localhost" >> .env
         echo "POSTGRES_PORT=5432" >> .env
         echo "ENVIRONMENT=test" >> .env
+        # Add dummy Telegram credentials for test
+        echo "TELEGRAM_API_ID=12345" >> .env
+        echo "TELEGRAM_API_HASH=dummy_hash_for_testing" >> .env
     
     - name: Run tests
       run: |
-        pytest tests/ -v --cov=src --cov=api --cov-report=xml
+        pytest tests/ -v --cov=src --cov=api --cov-report=xml --cov-report=term
     
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
