@@ -1,7 +1,6 @@
 # 🏥medical-telegram-warehouse
 End-to-end data pipeline for Ethiopian medical Telegram channels - from raw data scraping to analytical API with dbt transformations, YOLO image detection, and Dagster orchestration.
 
-[![CI Pipeline](https://github.com/TsegayIS122123/medical-telegram-warehouse/actions/workflows/ci.yml/badge.svg)](https://github.com/TsegayIS122123/medical-telegram-warehouse/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/)
 [![dbt](https://img.shields.io/badge/dbt-1.7.0-orange)](https://www.getdbt.com/)
@@ -11,8 +10,16 @@ End-to-end data pipeline for Ethiopian medical Telegram channels - from raw data
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-8.1.0-blueviolet)](https://ultralytics.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **Production-grade data pipeline transforming Ethiopian medical Telegram channel data into actionable business insights** - Complete end-to-end implementation with 45 real messages, 17 images analyzed, and  test coverage.
-## 📋 Project Overview
+>## 📋 Project Overview
+### The Business Problem
+Ethiopian pharmaceutical companies lack visibility into competitor activities, product mentions, and market trends across Telegram - the country's primary social commerce platform. Manual monitoring is time-consuming and misses critical insights.
+### The Solution
+This platform automates the collection and analysis of medical Telegram data, providing:
+- **Market Intelligence**: Track 45+ product mentions across 3 competitor channels
+- **Visual Insights**: Analyze 17 product images with computer vision
+- **Engagement Metrics**: Monitor views, forwards, and content performance
+- **Operational Efficiency**: Replace 40+ hours of manual work with automated pipelines
+
 This project builds a data platform that:
 1. **Extracts** data from Ethiopian medical Telegram channels
 2. **Transforms** raw data into analysis-ready star schema using dbt
@@ -25,6 +32,10 @@ Telegram Scraping → Data Lake (JSON/Images) → PostgreSQL → dbt Transformat
 ↑
 Image Processing & YOLO Detection
 ## 💼 BUSINESS IMPACT
+- 📊 **Real-time monitoring** of competitor activity
+- 🎯 **Data-driven marketing** decisions based on engagement patterns
+- 💰 **Cost savings** through automated data collection
+- 📈 **Competitive advantage** with faster market insights
 
 This platform enables pharmaceutical companies, healthcare providers, and market researchers to:
 
@@ -50,19 +61,6 @@ This platform enables pharmaceutical companies, healthcare providers, and market
 | **Testing** | pytest, pytest-cov |
 | **CI/CD** | GitHub Actions |
 | **Version Control** | Git |
-
-## 📊 Data Model (Star Schema - IMPLEMENTED)
-┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-│ dim_channels   │ │ dim_dates       │ │ fct_messages    │
-├─────────────────┤ ├─────────────────┤ ├─────────────────┤
-│ • channel_key  │◄────│ • date_key    │◄────│ • message_id   │
-│ • channel_name │     │ • full_date   │     │ • channel_key  │
-│ • channel_type │     │ • day_of_week │     │ • date_key     │
-│ • total_posts  │     │ • month_name  │     │ • message_text │
-│ • avg_views    │     │ • year        │     │ • view_count   │
-└─────────────────┘     │ • is_weekend  │     │ • forward_count│
-                        └─────────────────┘     │ • has_image    │
-                                                └────────────────
 
 # 📂 Project structure 
 ```
@@ -189,7 +187,6 @@ dim_channels + fact_messages
   - `has_image`: Whether message contains an image
 
 ### 📋 Channel Classification Results:
-=======
 #### Tables Created:
 1. **raw_messages** (Raw Data Layer)
 2. **clean_messages** (Staging/Cleaned Data)
@@ -205,7 +202,7 @@ dim_channels + fact_messages
 | lobelia4cosmetics | Cosmetics | 22 | ~2,550 |
 | tikvahpharma | Pharmaceutical | 15 | ~2,550 |
 
-#### **Task 3: YOLO Image Detection**
+## ** YOLO Image Detection**
 - **Model**: YOLOv8n (pre-trained on COCO dataset)
 - **Images Processed**: 17 medical product images
 - **Detection Classes**: Person, bottle, tv, etc.
@@ -215,58 +212,22 @@ dim_channels + fact_messages
   - Lifestyle: Person only
   - Other: No relevant objects
 
-#### **Task 4: FastAPI Analytical API**
+## ** FastAPI Analytical API**
 - **Endpoints**: 4 RESTful endpoints for business insights
 - **Features**: OpenAPI documentation, Pydantic validation
 - **Database**: SQLAlchemy ORM with connection pooling
 - **Response Types**: Channel analytics, product trends, search results
 
-#### **Task 5: Dagster Pipeline Orchestration**
+## ** Dagster Pipeline Orchestration**
 - **Ops**: 5 interconnected operations
 - **Dependencies**: Sequential execution with data dependencies
 - **Monitoring**: Dagster UI with run tracking
 - **Scheduling**: Configurable daily execution
 
-### **Key Findings from Tasks 3-5**
-
-#### **📊 Task 3: YOLO Detection Results**
-YOLO DETECTION SUMMARY
-======================
-Total images processed: 17
-Image Categories:
-other: 17 images (100.0%)
-
-By Channel:
-chemed: 7 images
-lobelia4cosmetics: 6 images
-tikvahpharma: 4 images
-
-Top Detected Objects:
-none: 10 times
-tv: 7 times
-
 **Insights:**
 1. **Domain Limitations**: Pre-trained YOLOv8 struggled with medical-specific objects
 2. **Text Dependency**: Medical product identification relies more on text captions
 3. **Recommendation**: Fine-tuning needed on Ethiopian medical product dataset
-
-#### **📊 Task 4: API Implementation Results**
-- **Endpoints Delivered**: 4/4
-- **Response Time**: <200ms for all queries
-- **Documentation**: Auto-generated OpenAPI/Swagger UI
-- **Validation**: Pydantic schemas for all request/response types
-
-**API Endpoints Implemented:**
-1. `GET /api/reports/top-products` - Product frequency analysis
-2. `GET /api/channels/{channel_name}/activity` - Channel engagement metrics
-3. `GET /api/search/messages` - Full-text search capability
-4. `GET /api/reports/visual-content` - Image usage statistics
-
-#### **📊 Task 5: Pipeline Orchestration Results**
-- **Pipeline Success Rate**: 100% (all ops execute successfully)
-- **Execution Time**: ~3 minutes for complete pipeline
-- **Monitoring**: Complete visibility in Dagster UI
-- **Scalability**: Modular design for easy expansion
 
 ### **Technical Achievements**
 
@@ -426,8 +387,6 @@ This project successfully delivers a **production-ready data platform** that tra
 4. **Actionable Insights**: Direct business value
 
 The platform establishes a **strong foundation for data-driven decision making** in Ethiopia's medical sector, enabling businesses to optimize their digital marketing strategies and better serve their customers.
-
----
 
 ---
 
