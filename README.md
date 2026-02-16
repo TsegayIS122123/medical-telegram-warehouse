@@ -1,6 +1,17 @@
-# medical-telegram-warehouse
+# 🏥medical-telegram-warehouse
 End-to-end data pipeline for Ethiopian medical Telegram channels - from raw data scraping to analytical API with dbt transformations, YOLO image detection, and Dagster orchestration.
 
+[![CI Pipeline](https://github.com/TsegayIS122123/medical-telegram-warehouse/actions/workflows/ci.yml/badge.svg)](https://github.com/TsegayIS122123/medical-telegram-warehouse/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)](https://www.postgresql.org/)
+[![dbt](https://img.shields.io/badge/dbt-1.7.0-orange)](https://www.getdbt.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.128.0-green)](https://fastapi.tiangolo.com/)
+[![Dagster](https://img.shields.io/badge/Dagster-1.12.0-purple)](https://dagster.io/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.51.0-red)](https://streamlit.io/)
+[![YOLOv8](https://img.shields.io/badge/YOLOv8-8.1.0-blueviolet)](https://ultralytics.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **Production-grade data pipeline transforming Ethiopian medical Telegram channel data into actionable business insights** - Complete end-to-end implementation with 45 real messages, 17 images analyzed, and  test coverage.
 ## 📋 Project Overview
 This project builds a data platform that:
 1. **Extracts** data from Ethiopian medical Telegram channels
@@ -13,24 +24,32 @@ This project builds a data platform that:
 Telegram Scraping → Data Lake (JSON/Images) → PostgreSQL → dbt Transformations → Star Schema → FastAPI → End Users
 ↑
 Image Processing & YOLO Detection
+## 💼 BUSINESS IMPACT
 
-## 🛠️ Tech Stack
-- **Data Extraction**: Python, Telethon (planned), Pillow (image generation)
-- **Data Warehouse**: PostgreSQL
-- **Transformation**: dbt (Data Build Tool) v1.7.0
-- **Image Analysis**: YOLOv8 (Ultralytics) - planned
-- **API**: FastAPI, SQLAlchemy, Pydantic
-- **Orchestration**: Dagster (planned)
-- **Infrastructure**: Docker, Docker Compose
+This platform enables pharmaceutical companies, healthcare providers, and market researchers to:
 
-## 🚀 Quick Start
-1. Clone repository
-2. Copy `.env.example` to `.env` and fill in credentials
-3. Run `docker-compose up -d`
-4. Access services:
-   - API: http://localhost:8000 (planned)
-   - API Docs: http://localhost:8000/docs (planned)
-   - Dagster: http://localhost:3000 (planned)
+| Metric | Impact |
+|--------|--------|
+| **Market Intelligence** | Track 45+ medical product mentions across 3 Ethiopian Telegram channels |
+| **Visual Content Analysis** | 17 images analyzed with YOLOv8 object detection |
+| **Competitive Analysis** | Monitor 3 channels (Chemed, Lobelia4Cosmetics, TikvahPharma) |
+
+## 🛠️ TECHNOLOGY STACK
+
+| Category | Technologies |
+|----------|--------------|
+| **Language** | Python 3.10+ |
+| **Data Extraction** | Telethon, Custom Scraper |
+| **Data Warehouse** | PostgreSQL 15 (Docker) |
+| **Transformations** | dbt (Data Build Tool) v1.7.0 |
+| **Computer Vision** | YOLOv8 (Ultralytics) |
+| **API Framework** | FastAPI, SQLAlchemy, Pydantic |
+| **Dashboard** | Streamlit, Plotly |
+| **Orchestration** | Dagster |
+| **Infrastructure** | Docker, Docker Compose |
+| **Testing** | pytest, pytest-cov |
+| **CI/CD** | GitHub Actions |
+| **Version Control** | Git |
 
 ## 📊 Data Model (Star Schema - IMPLEMENTED)
 ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
@@ -43,9 +62,47 @@ Image Processing & YOLO Detection
 │ • avg_views    │     │ • year        │     │ • view_count   │
 └─────────────────┘     │ • is_weekend  │     │ • forward_count│
                         └─────────────────┘     │ • has_image    │
-                                                └─────────────────┘
+                                                └────────────────
 
-## 🎯 Project Status: TASK 1 & 2 COMPLETE ✅
+# 📂 Project structure 
+```
+medical-telegram-warehouse/
+├── .github/workflows/          # CI/CD pipeline
+│   └── ci.yml                  
+├── api/                         # FastAPI application
+│   ├── main.py                  
+│   ├── routers/                 
+│   └── schemas.py               # Pydantic models
+├── dashboard/                    # Streamlit dashboard
+│   ├── app.py                    
+│   └── pages/                    # Multi-page tabs
+├── medical_warehouse/            # dbt project
+│   ├── models/
+│   │   ├── staging/              # Staging models
+│   │   └── marts/                a
+│   └── tests/                     # dbt tests
+├── pipeline/                      # Dagster orchestration
+│   └── dagster_pipeline.py        
+├── src/                           
+│   ├── config.py                  
+│   ├── scraper/                   # Telegram scraping
+│   ├── database/                   
+│   └── yolo/                       # YOLO detection
+├── tests/                          # Unit tests
+│   ├── unit/                       
+│   └── conftest.py                  
+├── data/                          
+│   ├── raw/                         # 45 messages, 17 images
+│   └── yolo_detections.csv          # YOLO results
+├── logs/                            # Application logs
+├── scripts/                         
+├── .env.example                      # Environment template
+├── docker-compose.yml                 
+├── requirements.txt                    # Production dependencies
+├── requirements-dev.txt                 # Development dependencies
+└── README.md                            
+```
+### Task 1: Data Scraping and Collection 
 
 ### **📊 Actual Results:**
 - **Scraped Messages:** 45 real messages (Task 1) + 89 sample messages
@@ -55,10 +112,8 @@ Image Processing & YOLO Detection
 - **dbt Models Created:** 4 models (staging + 3 marts) - 100% tests passing
 - **Data Warehouse:** Complete star schema implemented
 
-### Task 1: Data Scraping and Collection - COMPLETE
-
 #### 📋 Deliverables Created:
-1. **Scraper Script** (`src/scraper.py`)
+1. **Scraper Script** 
    - Generates realistic Telegram data matching all requirements
    - Creates sample data for Ethiopian medical Telegram channels
    - Includes all 8 required data fields
@@ -81,12 +136,18 @@ Image Processing & YOLO Detection
    - **ethiopharmacy** - Additional from et.tgstat.com/medicine
    - **addispharma** - Additional from et.tgstat.com/medicine
 
-##  Task 2: Data Modeling and Transformation - COMPLETE
+##  Task 2: Data Modeling and Transformation 
 
-### 📊 Data Warehouse Implementation
-
-#### Database: SQLite (`data/warehouse.db`)
-We used SQLite for simplicity and ease of setup, creating a complete star schema data warehouse.
+- We used SQLite for simplicity and ease of setup, creating a complete star schema data warehouse.
+Data Modeling & dbt Transformations**
+-  Raw data loaded to PostgreSQL (`raw.telegram_messages`: 45 rows)
+- Staging models in `public_staging`
+-  Star schema implemented:
+  - `public_marts.dim_channels` (3 rows)
+  - `public_public_marts.dim_dates` (31 rows)
+  - `public_marts.fct_messages` (45 rows)
+-  **14 dbt tests** - ALL PASSING!
+-  Generated dbt documentation
 
 #### Schema Created:
 raw_messages → clean_messages
@@ -144,43 +205,6 @@ dim_channels + fact_messages
 | lobelia4cosmetics | Cosmetics | 22 | ~2,550 |
 | tikvahpharma | Pharmaceutical | 15 | ~2,550 |
 
-### 🛠️ How It Was Implemented:
-
-#### Scripts Created:
-1. **`scripts/load_data_simple.py`** - Main data loading script
-2. **`scripts/check_tables_simple.py`** - Verification script
-
-#### Commands to Run:
-```bash
-# Load data and create warehouse
-python scripts/load_data_simple.py
-
-# Verify results
-python scripts/check_tables_simple.py
-=======
-## 🚀 Quick Start Commands
-
-```bash
-# Option 1: Using Docker (recommended)
-docker-compose up -d
-
-# Option 2: Manual setup
-# 1. Start PostgreSQL
-docker run -d --name medical_postgres -p 5432:5432 \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=medical_warehouse \
-  postgres:15
-
-# 2. Run scraper (Task 1)
-python src/scraper.py
-
-# 3. Load to PostgreSQL (Task 2)
-python src/loader.py
-
-# 4. Run dbt transformations
-cd medical_warehouse
-dbt run
-dbt test
 #### **Task 3: YOLO Image Detection**
 - **Model**: YOLOv8n (pre-trained on COCO dataset)
 - **Images Processed**: 17 medical product images
@@ -246,25 +270,25 @@ tv: 7 times
 
 ### **Technical Achievements**
 
-#### **✅ Data Quality & Testing**
+#### ** Data Quality & Testing**
 - 14 comprehensive dbt tests implemented
 - 100% test pass rate
 - Custom tests for business rules
 - Referential integrity validation
 
-#### **✅ Image Processing Pipeline**
+#### ** Image Processing Pipeline**
 - Automated image download and processing
 - Detection results integrated into data warehouse
 - Classification framework for visual content analysis
 - Confidence scoring for object detection
 
-#### **✅ API Performance**
+#### ** API Performance**
 - Connection pooling for database efficiency
 - Query optimization for analytical endpoints
 - CORS middleware for cross-origin requests
 - Structured error responses
 
-#### **✅ Orchestration Reliability**
+#### ** Orchestration Reliability**
 - Atomic operations with rollback capability
 - Dependency-aware scheduling
 - Comprehensive logging
@@ -311,31 +335,74 @@ tv: 7 times
 
 ### **Production Readiness Assessment**
 
-#### **✅ Infrastructure**
+#### ** Infrastructure**
 - Docker containerization
 - Environment variable management
 - CI/CD pipeline
 - Version-controlled configurations
 
-#### **✅ Monitoring**
+#### ** Monitoring**
 - Structured logging across all components
 - Performance metrics collection
 - Error tracking and alerting
 - Health check endpoints
 
-#### **✅ Scalability**
+#### ** Scalability**
 - Modular architecture
 - Incremental data loading
 - Horizontal scaling support
 - Caching layer ready
 
+#### **Testing & CI/CD**
+-  **14 unit tests** - ALL PASSING!
+  - API endpoint tests
+  - Database connection tests
+  - Import tests for all packages
+  - Scraper environment tests
+-  GitHub Actions workflow (`.github/workflows/ci.yml`)
+-  Tests run automatically on push
+-  CI badge in README
+
+#### **Interactive Dashboard**
+-  Streamlit dashboard at http://localhost:8501
+-  4 interactive tabs:
+  - **Overview**: Channel activity metrics
+  - **Product Analysis**: Word frequency from messages
+  - **Image Insights**: Impact of images on views
+  - **YOLO Detection**: Object detection results
+-  Real-time data from PostgreSQL
+-  Plotly interactive charts
+
+#### **Model Explainability**
+-  YOLO confidence score visualizations
+-  Image category distribution analysis
+-  Detection pattern insights
+-  Impact analysis: Images vs. views
+
+---
+## 📊 DATA SUMMARY
+
+| Table | Schema | Row Count |
+|-------|--------|-----------|
+| `raw.telegram_messages` | raw | 45 |
+| `public_marts.fct_messages` | public_marts | 45 |
+| `public_marts.dim_channels` | public_marts | 3 |
+| `public_public_marts.dim_dates` | public_public_marts | 31 |
+| `public_public_marts.fct_image_detections` | public_public_marts | 17 |
+---
+# Dashboard Caption:
+Interactive Streamlit dashboard showing 45 scraped messages and 17 analyzed images from Ethiopian medical Telegram channels.
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
 ### **Future Enhancements**
 
 #### **Short-term (1-3 months)**
-1. **YOLO Fine-tuning**: Train on Ethiopian medical product dataset
-2. **Real-time Processing**: Add streaming capabilities
-3. **Dashboard Integration**: Connect to BI tools
-4. **Advanced NLP**: Product extraction from text
+1. **Advanced NLP**: Product extraction from text
 
 #### **Medium-term (3-6 months)**
 1. **Multi-platform Expansion**: Include WhatsApp, Instagram
@@ -358,39 +425,97 @@ This project successfully delivers a **production-ready data platform** that tra
 3. **Scalable Architecture**: Ready for business growth
 4. **Actionable Insights**: Direct business value
 
-**Key Success Metrics:**
-- ✅ 45 messages processed from 3 channels
-- ✅ 17 images analyzed with computer vision
-- ✅ 14 dbt tests passing at 100%
-- ✅ 4 analytical endpoints delivering insights
-- ✅ Complete orchestration with Dagster
-
 The platform establishes a **strong foundation for data-driven decision making** in Ethiopia's medical sector, enabling businesses to optimize their digital marketing strategies and better serve their customers.
 
 ---
 
-## 🚀 How to Run the Complete Pipeline
+---
+
+## 🚀 QUICK START
+
+### Prerequisites
+- Python 3.10+
+- Docker & Docker Compose
+- Git
+
+### Installation
 
 ```bash
-# Method 1: Individual Components
-# 1. Scrape data
-python src/scraper.py
+# 1. Clone repository
+git clone https://github.com/TsegayIS122123/medical-telegram-warehouse.git
+cd medical-telegram-warehouse
 
-# 2. Transform with dbt
+# 2. Create virtual environment
+python -m venv venv
+source venv/Scripts/activate  # Windows
+# source venv/bin/activate    # Linux/Mac
+
+# 3. Install dependencies
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+
+# 4. Copy environment variables
+cp .env.example .env
+# Edit .env with your credentials
+
+# 5. Start PostgreSQL with Docker
+docker-compose up -d
+sleep 10  # Wait for PostgreSQL to start
+
+# 6. Load data to database
+python -c "from src.database.loader import DataLoader; DataLoader().load_json_files('2026-01-17')"
+
+# 7. Run dbt transformations
 cd medical_warehouse
 dbt run
 dbt test
+cd ..
 
-# 3. Run image detection
-python src/yolo_detect.py
+# 8. Run tests
+pytest tests/ -v
 
-# 4. Start API
-cd api
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+🖥️ RUNNING ALL SERVICES (4 Terminals)
+Terminal 1: FastAPI Backend
+cd ~/Desktop/
+source venv/Scripts/activate
+uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+API: http://localhost:8000
+Docs: http://localhost:8000/docs
 
-# 5. Start orchestration
-cd pipeline
-dagster dev -f dagster_pipeline.py
+Terminal 2: Streamlit Dashboard
+bash
+cd ~/Desktop/
+source venv/Scripts/activate
+streamlit run dashboard/app.py
+Dashboard: http://localhost:8501
 
-# Method 2: Using Docker Compose
-docker-compose up -d
+Terminal 3: Dagster Orchestration
+cd ~/Desktop/
+source venv/Scripts/activate
+dagster dev -f pipeline/dagster_pipeline.py
+Dagster UI: http://localhost:3000
+
+Terminal 4: Database 
+# Check PostgreSQL status
+docker ps | grep postgres
+
+# Access PostgreSQL shell
+docker exec -it medical_postgres psql -U postgres -d medical_warehouse
+```
+# 👨‍💻 AUTHOR
+Tsegay 
+
+- GitHub: @TsegayIS122123
+- Project Repository: medical-telegram-warehouse
+
+# 📄 LICENSE
+MIT License - see LICENSE file for details.
+
+# 🙏 ACKNOWLEDGMENTS
+- Kara Solutions for project guidance
+- Ethiopian medical Telegram community
+- Open source contributors to:
+fastAPI,Dagster,dbt,Streamlit,Ultralytics, YOLO
+
+
+

@@ -44,3 +44,115 @@
 2026-01-17 20:22:04,896 - INFO - Data saved to: data/raw/telegram_messages/2026-01-17/
 2026-01-17 20:22:04,898 - INFO - Images saved to: data/raw/images/
 2026-01-17 20:22:04,900 - INFO - ==================================================
+2026-02-16 16:28:44,342 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 16:28:44,353 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 16:32:33,269 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 16:32:33,272 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 17:47:35,817 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 17:47:35,823 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 17:48:06,519 - INFO - Database engine created for localhost:5433
+2026-02-16 17:48:08,826 - INFO - Database schemas and tables created
+2026-02-16 17:48:09,450 - INFO - Loaded 45 messages for 2026-01-17
+2026-02-16 18:10:13,810 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:10:13,813 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:13:17,456 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:13:17,459 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:13:26,754 - INFO - Database engine created for localhost:5433
+2026-02-16 18:18:24,857 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:18:24,940 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:33:49,718 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:33:49,721 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:34:26,551 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:34:26,555 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:34:30,467 - INFO - Database engine created for localhost:5433
+2026-02-16 18:47:09,433 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:47:09,436 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:49:33,426 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:49:33,431 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:49:36,000 - INFO - Database engine created for localhost:5433
+2026-02-16 18:50:14,096 - INFO - Database engine created for localhost:5433
+2026-02-16 18:50:14,360 - ERROR - Database health check failed: Not an executable object: 'SELECT 1'
+2026-02-16 18:55:49,127 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:55:49,134 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:56:30,499 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:56:30,501 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:56:36,466 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:56:36,468 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:57:19,263 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:57:19,265 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:58:06,226 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:58:06,229 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:58:18,696 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 18:58:18,700 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 18:58:20,158 - INFO - Database engine created for localhost:5433
+2026-02-16 19:00:33,601 - INFO - Database engine created for localhost:5433
+2026-02-16 19:03:36,116 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:03:36,119 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:05:52,327 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:05:52,329 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:06:41,205 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:06:41,207 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:06:46,362 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:06:46,364 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:06:52,540 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:06:52,541 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:08:16,194 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:08:16,196 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:08:28,605 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:08:28,608 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:08:33,789 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:08:33,792 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:08:37,299 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:08:37,301 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:09:38,534 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:09:38,537 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:09:41,631 - INFO - Database engine created for localhost:5433
+2026-02-16 19:13:13,290 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:13:13,292 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:13:16,269 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:13:16,271 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:16:55,981 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:16:55,983 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:36:03,623 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:36:03,629 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:36:20,406 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:36:20,408 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:36:56,296 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:36:56,306 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:37:06,979 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:37:06,981 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:37:17,840 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:37:17,843 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:37:51,010 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:37:51,012 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:38:04,907 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:38:04,911 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:38:09,702 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:38:09,704 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 19:38:13,058 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 19:38:13,060 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:15:26,637 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:15:26,661 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:16:42,554 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:16:42,555 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:20:22,947 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:20:22,949 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:20:26,161 - INFO - Database engine created for localhost:5433
+2026-02-16 20:24:13,113 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:24:13,115 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:26:12,405 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:26:12,410 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:26:24,907 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:26:24,909 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:26:32,423 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:26:32,426 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:26:43,534 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:26:43,539 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:27:07,759 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:27:07,802 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:28:27,986 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:28:27,992 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:28:40,490 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:28:40,504 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption
+2026-02-16 20:28:48,649 - INFO - Failed to load SSL library: <class 'OSError'> (no library called "ssl" found)
+2026-02-16 20:28:48,652 - INFO - cryptg module not installed and libssl not found, falling back to (slower) Python encryption

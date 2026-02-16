@@ -1,0 +1,16 @@
+# Testing
+pytest>=7.4.3
+pytest-cov>=4.1.0
+pytest-asyncio>=0.23.0
+httpx>=0.25.2
+
+# Development
+ipykernel>=6.0.0
+jupyter>=1.0.0
+black>=24.0.0
+flake8>=6.0.0
+mypy>=1.8.0
+
+# Dashboard
+streamlit>=1.51.0
+plotly>=6.5.0

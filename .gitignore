@@ -1,8 +1,51 @@
-data/
-yolov8n.pt
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.so
+.Python
+env/
+venv/
 .env
+.venv
+*.egg-info/
+dist/
+build/
+
+# Data
+data/
+*.db
+*.csv
+*.parquet
+
+# Models
+*.pt
+*.pth
+*.onnx
+
+# Logs
+logs/
 *.log
+
+# IDE
 .vscode/
+.idea/
+*.swp
+*.swo
+
+# dbt
 medical_warehouse/target/
+medical_warehouse/dbt_packages/
+medical_warehouse/logs/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Session files
+session/
+*.session
