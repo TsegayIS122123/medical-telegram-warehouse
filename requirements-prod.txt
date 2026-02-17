@@ -5,3 +5,4 @@ sqlalchemy>=2.0.45
 pandas>=2.1.4
 python-dotenv>=1.0.0
 pydantic>=2.12.5
+pillow>=10.2.0
