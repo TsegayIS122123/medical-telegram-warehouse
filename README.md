@@ -27,6 +27,14 @@ This project builds a data platform that:
 4. **Serves** insights through a FastAPI analytical API
 5. **Orchestrates** with Dagster for production workflows
 
+## 🌐 **LIVE DEMO**
+
+| Service | URL | Status |
+|---------|-----|--------|
+| **API Documentation** | [https://medical-telegram-api.onrender.com/docs](https://medical-telegram-api.onrender.com/docs) | 
+| **Interactive Dashboard** | [https://medical-telegram-dashboard.onrender.com](https://medical-telegram-dashboard.onrender.com) | 
+| **API Health Check** | [https://medical-telegram-api.onrender.com/api/health](https://medical-telegram-api.onrender.com/api/health) | 
+
 ## 🏗️ Architecture
 Telegram Scraping → Data Lake (JSON/Images) → PostgreSQL → dbt Transformations → Star Schema → FastAPI → End Users
 ↑
