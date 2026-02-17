@@ -1,0 +1,23 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: medical-telegram-db
+    plan: free
+    type: postgresql
+    ipAllowList: []
+
+  # FastAPI Backend
+  - type: web
+    name: medical-telegram-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-prod.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromService:
+          type: pserv
+          name: medical-telegram-db
+          property: connectionString
+      - key: ENVIRONMENT
+        value: production
